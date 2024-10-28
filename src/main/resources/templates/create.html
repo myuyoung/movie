@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+<th:block layout:fragment="content">
+    <section class="s1">
+        <div class="center-box">
+            <h2>영화 등록하기</h2>
+            <form th:action="@{/movies/create}" method="post">
+                <div class="mb-3 bg-dark bg-gradient">
+                    <label for="name" class="form-label">영화명:</label>
+                    <input type="text" id="name" name="name" class="form-control">
+                </div>
+                <div class="mb-3 bg-dark bg-gradient">
+                    <label for="director" class="form-label">배급사:</label>
+                    <input type="text" id="director" name="director" class="form-control">
+                </div>
+                <div class="mb-3 bg-dark bg-gradient">
+                    <label for="distributer" class="form-label">영화명:</label>
+                    <input type="text" id="distributer" name="distributer" class="form-control">
+                </div>
+                <div class="mb-3 bg-dark bg-gradient">
+                    <label for="actor" class="form-label">배우:</label>
+                    <input type="text" id="actor" name="actor" class="form-control">
+                </div>
+                <div class="mb-3 bg-dark bg-gradient">
+                    <label for="rating" class="form-label">평점:</label>
+                    <input type="text" id="rating" name="rating" class="form-control">
+                </div>
+                <div class="mb-3 bg-dark bg-gradient">
+                    <label for="price" class="form-label">관람료:</label>
+                    <input type="text" id="price" name="price" class="form-control">
+                </div>
+                <div class="mb-3 bg-dark bg-gradient">
+                    <label for="plot" class="form-label">시놉시스:</label>
+                    <textarea name="plot" id="plot" rows="5" cols="100"></textarea>
+                </div>
+                <input type="submit" value="저장하기" class="btn btn-info my-2">
+                <input type="reset" value="다시쓰기" class="btn btn-light my-2">
+                <a th:href="@{/movies/list}" class="btn btn-light my-2">영화목록</a>
+            </form>
+        </div>
+    </section>
+</th:block>
+</html>

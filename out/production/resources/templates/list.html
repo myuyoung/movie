@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+<th:block layout:fragment="content">
+    <section class="s1">
+        <div class="center-box">
+            <h2>영화 목록</h2>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">번호</th>
+                        <th scope="col">영화명</th>
+                        <th scope="col">감독</th>
+                        <th scope="col">배급사</th>
+                        <th scope="col">주연배우</th>
+                        <th scope="col">평점</th>
+                        <th scope="col">관람가격</th>
+                        <th scope="col">시놉시스</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="movie : ${movieList}">
+                        <td th:text="${movie.id}"></td>
+                        <td>
+                            <a th:href="@{|/movies/detail/${movie.id}|}" th:text="${movie.name}"></a>
+                        </td>
+                        <td th:text="${movie.director}"></td>
+                        <td th:text="${movie.distributer}"></td>
+                        <td th:text="${movie.actor}"></td>
+                        <td th:text="${movie.rating}"></td>
+                        <td th:text="${movie.price}"></td>
+                        <td th:text="${movie.plot}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 영화 등록하기 버튼-->
+            <a th:href="@{/movies/create}" class="btn btn-info">영화 등록하기 </a>
+            <a th:href="@{/}" class="btn btn-">메인 화면 </a>
+        </div>
+    </section>
+</th:block>
+</html>

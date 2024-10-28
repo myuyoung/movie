@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+    <th:block layout:fragment="content">
+        <!--부트스트랩 슬라이드-->
+        <section class="s1">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img th:src="@{/img/slide1.jpg}" class="d-block w-100" alt="슬라이드1">
+                    </div>
+                    <div class="carousel-item">
+                        <img th:src="@{/img/slide2.jpg}" class="d-block w-100" alt="슬라이드2">
+                    </div>
+                    <div class="carousel-item">
+                        <img th:src="@{/img/slide3.jpg}" class="d-block w-100" alt="슬라이드3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+        <section class="s2">
+            <div class="center-box">
+                <h2>박스오피스</h2>
+                <div class="box-office content">
+                    <div class="swiper mySwiper1">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" th:each="boxOfficeApi : ${boxOfficeList}">
+                                <div class="photo">
+                                    <img th:src="${boxOfficeApi.image}" alt="banner">
+                                    <i th:text="${boxOfficeApi.rank}"></i>
+                                    <div class="des">
+                                        <p th:text="${boxOfficeApi.overview}"></p>
+                                        <hr>
+                                        <button type="button" class="reviewBtn"
+                                         th:id="'goReview-'+${boxOfficeApi.id}"
+                                         th:data-movie-id="${boxOfficeApi.id}"
+                                                th:data-movie-rank="${boxOfficeApi.rank}"
+                                         th:data-movie-nm="${boxOfficeApi.movieNm}"
+                                         th:data-movie-image="${boxOfficeApi.image}"
+                                         th:data-movie-overview="${boxOfficeApi.overview}"
+                                         th:data-movie-runtime="${boxOfficeApi.runtime}"
+                                         th:data-release-date="${boxOfficeApi.releaseDate}"
+                                         th:onclick="'(function() {goReview('+${boxOfficeApi.id}+')})()'">상세보기</button>
+                                    </div>
+                                </div>
+                                <div class="btns">
+                                    <button class="favorite line">
+                                        <span></span> 2.1k
+                                    </button>
+                                    <button type="button" class="reserveBtn"
+                                    th:id="'reservation-'+${boxOfficeApi.id}"
+                                    th:data-movie-id="${boxOfficeApi.id}"
+                                    th:data-movie-rank="${boxOfficeApi.rank}"
+                                    th:data-movie-nm="${boxOfficeApi.movieNm}"
+                                    th:data-movie-image="${boxOfficeApi.image}"
+                                    th:data-movie-overview="${boxOfficeApi.overview}"
+                                    th:data-movie-runtime="${boxOfficeApi.runtime}"
+                                    th:data-release-date="${boxOfficeApi.releaseDate}"
+                                    th:onclick="'reservation('+${boxOfficeApi.id}+')'"
+                                    >예매</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="s3">
+            <div class="center-box">
+                <h2>혜택</h2>
+                <div class="benefit">
+                    <ul>
+                    <li><a href="#">
+                        <img th:src="@{/img/ico-vip-main.png}" alt="VIP LOUNGE"/>
+                        <p>VIP LOUNGE</p>
+                    </a></li>
+                    <li><a href="#">
+                        <img th:src="@{/img/ico-membership-main.png}" alt="멤버십"/>
+                        <p>멤버십</p>
+                    </a></li>
+                    <li><a href="#">
+                        <img th:src="@{/img/ico-card-main.png}" alt="할인카드안내" />
+                        <p>할인카드안내</p>
+                    </a></li>
+                    <li><a href="#">
+                        <img th:src="@{/img/ico-event-main.png}" alt="이벤트" />
+                        <p>이벤트</p>
+                    </a></li>
+                    <li><a href="#">
+                        <img th:src="@{/img/ico-store-main.png}" alt="스토어" />
+                        <p>스토어</p>
+                    </a></li>
+                </ul>
+                </div>
+            </div>
+        </section>
+        <section class="s4">
+            <div class="center-box">
+                <h2>K-CINEMA 안내</h2>
+                <div class="guide">
+                    <div class="swiper mySwiper2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide slide1"></div>
+                            <div class="swiper-slide slide2"></div>
+                            <div class="swiper-slide slide3"></div>
+                            <div class="swiper-slide slide4"></div>
+                            <div class="swiper-slide slide5"></div>
+                            <div class="swiper-slide slide6"></div>
+                            <div class="swiper-slide slide7"></div>
+                        </div><!-- swiper-wrapper -->
+                    </div><!-- swiper -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div><!-- guide -->
+            </div>
+        </section>
+        <script>
+            //예매하기
+            function reservation(id){
+                if(checkLoginAndRedirect()){
+                    const movieElement = document.querySelector(`[data-movie-id="${id}"]`);
+                    const rank = movieElement.getAttribute("data-movie-rank");
+                    const movieNm = movieElement.getAttribute("data-movie-nm");
+                    const image = movieElement.getAttribute("data-movie-image");
+                    const overview = movieElement.getAttribute("data-movie-overview");
+                    const runtime = movieElement.getAttribute("data-movie-runtime");
+                    const releaseDate = movieElement.getAttribute("data-release-date");
+
+                    //폼 요소를 동적으로 생성하고 값 설정하기
+                    const form = document.createElement("form");
+                    form.setAttribute("method", "post");
+                    form.setAttribute("action", "/reserve/start");
+
+                    //동적으로 생성된 form객체에 필드 저장
+                    addHiddenField(form, "id", id);
+                    addHiddenField(form, "rank", rank);
+                    addHiddenField(form, "movieNm", movieNm);
+                    addHiddenField(form, "image", image);
+                    addHiddenField(form, "overview", overview);
+                    addHiddenField(form, "runtime", runtime);
+                    addHiddenField(form, "releaseDate", releaseDate);
+
+                    //현재 문서에 form 객체를 추가하고 제출(submit)
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            }
+
+            //상세보기
+            function goReview(id){
+                const movieElement = document.querySelector(`[data-movie-id="${id}"]`);
+                const rank = movieElement.getAttribute("data-movie-rank");
+                const movieNm = movieElement.getAttribute("data-movie-nm");
+                const image = movieElement.getAttribute("data-movie-image");
+                const overview = movieElement.getAttribute("data-movie-overview");
+                const runtime = movieElement.getAttribute("data-movie-runtime");
+                const releaseDate = movieElement.getAttribute("data-release-date");
+
+                //상세보기 페이지로 이동하고 값을 전달함
+                window.location.href = `/post/detail_api/${rank}`;
+            }
+
+            //로그인 상태 확인
+            function checkLoginAndRedirect(){
+                const isLoggedIn = [[${#authentication.principal != 'anonymousUser'}]];
+
+                //로그인 상태라면 함수 계속 실행
+                if (isLoggedIn){
+                    return true;
+                }else{
+                //로그인 하지 않은 상태라면 로그인 페이지로 이동
+                    alert("로그인 후 이용해 주세요!");
+                    window.location.href="/user/login";
+                }
+            }
+            //동적인 form 객체에 input 자식요소 추가하는 메서드
+            function addHiddenField(form, name, value){
+                const input = document.createElement("input");
+                input.setAttribute("type", "hidden");
+                input.setAttribute("name", name);
+                input.setAttribute("value", value);
+                form.appendChild(input);
+            }
+        </script>
+    </th:block>
+</html>

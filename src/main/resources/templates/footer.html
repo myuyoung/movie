@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="footerFrag">
+    <footer>
+        <div class="center-box">
+            <div class="up-area">
+                <div class="info">
+                    <ul>
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">인재채용</a></li>
+                        <li><a href="#">사회공헌</a></li>
+                        <li><a href="#">제휴/광고/부대사업문의</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">위치기반서비스 이용약관</a></li>
+                        <li><a href="#" class="strong">개인정보처리방침</a></li>
+                        <li><a href="#">윤리경영</a></li>
+                    </ul>
+                </div>
+                <div class="footer-search">
+                    <a href="#">
+                        <img th:src="@{/img/ico-footer-search.png}" alt="찾기버튼"/>
+                        <p>극장찾기</p>
+                    </a>
+                </div>
+            </div>
+            <div class="down-area">
+                <div class="left-info">
+                    <div class="footer-logo">
+                        <img th:src="@{/img/f-logo.png}" alt="푸터 로고"/>
+                    </div>
+                    <address>
+                        서울특별시 성동구 왕십리로 50, 6층 (성수동1가, K-CINEMA) ARS 1544-0070 대표이메일 m.dreamcenter@partnet.kcinama.co.kr<br>
+                        대표자명 홍정인·사업자등록번호 211-86-59478·통신판매업신고번호 2023-서울성동-0177<br>
+                        COPYRIGHT ⓒK-CINEMA. All rights reserved.
+                    </address>
+                </div>
+                <div class="sns">
+                    <ul>
+                        <li><a href="#">
+                            <img th:src="@{/img/ico-youtubeN.png}" alt="youtube"/>
+                        </a></li>
+                        <li><a href="#">
+                            <img th:src="@{/img/ico-instagramN.png}" alt="instagram"/>
+                        </a></li>
+                        <li><a href="#">
+                            <img th:src="@{/img/ico-facebookN.png}" alt="facebook"/>
+                        </a></li>
+                        <li><a href="#">
+                            <img th:src="@{/img/ico-twitterN.png}" alt="twitter"/>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</th:block>
+</html>

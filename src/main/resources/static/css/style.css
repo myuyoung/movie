@@ -1,0 +1,542 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+ul { padding-left:0; }
+li { list-style:none; }
+a { text-decoration:none; display:block; color:#fff; white-space:nowrap; }
+img { width:100%; }
+html, body { overflow-x:hidden; }
+body { background-color:#000; }
+.center-box { width:1200px; margin:0 auto; }
+h2 { font-size:20px; text-align:center; }
+header {
+    height:90px;
+    border-bottom:1px solid rgba(255,255,255, 0.2);
+}
+header .logo {
+    width:190px;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    top:14px;
+}
+header .top-menu, header .navi {
+    display:flex;
+    justify-content:space-between;
+    /*align-items:center;*/
+    padding-top:15px;
+}
+header .navi {
+    padding-top:0;
+}
+header ul {
+    display:flex;
+    justify-content:space-between;
+}
+header .top-menu ul li { margin:0 10px; }
+header .top-menu ul li a { font-size:14px; color:#666; font-weight:bold; }
+header .navi .left_icon ul,
+header .navi .right_icon ul { margin-bottom:3rem; }
+header .navi .left_icon ul li,
+header .navi .right_icon ul li { width:20px; margin:0 10px; }
+header .navi nav { width:76%; z-index:100; position:relative; }
+header .navi nav .event { margin-left:38%; }
+header .navi nav ul li { position:relative; }
+header .navi nav ul li a { font-size:16px; position:relative; }
+header .navi nav ul li .menu { padding-bottom:14px; }
+header .navi nav ul li .menu:after {
+    content:'';
+    position:absolute;
+    bottom:0; left:0;
+    width:100%;
+    height:3px;
+    background-color:#fff;
+    display:none;
+}
+/*주메뉴에 마우스 오버했을 때 주메뉴 밑줄 나타남*/
+header .navi nav ul li:hover .menu:after { display:block; }
+header .navi nav .sub { position:absolute; left:50%; transform:translateX(-50%); display:flex; }
+header .navi nav .sub li { padding:0 14px; }
+header .navi nav .sub li a { font-size:16px; padding:12px 0; }
+header .navi nav .sub li a:hover { text-decoration:underline; }
+header .sub-bg { width:100%; height:46px; position:absolute; top:90px; left:0; z-index:99; background-color:rgba(0,0,0, 0.8); display:none; }
+
+/*section1*/
+section .carousel {
+    overflow:hidden;
+}
+section .carousel img {
+/*section의 carousel 객체의 높이는 100%에서 header높이를 뺀 값만큼 설정*/
+    height:calc(100vh - 90px);
+    object-fit:cover;
+}
+/*section2*/
+section .center-box {
+    padding:100px 0;
+    color:white;
+}
+section .content, section form, section table {
+    margin-top:50px;
+}
+section .box-office .mySwiper1 .swiper-slide {
+    overflow:hidden;
+    border-radius:6px;
+}
+section .box-office .mySwiper1 .swiper-slide .photo {
+    width:100%;
+    height:400px;
+    position:relative;
+    cursor:pointer;
+}
+section .box-office .mySwiper1 .swiper-slide .photo img {
+    width:100%; height:100%;
+    object-fit:cover;
+}
+section .box-office .mySwiper1 .swiper-slide .photo i {
+    position:absolute;
+    top:0; left:0;
+    font-size:34px;
+    display:block;
+    padding-left:8px;
+    text-shadow:1px 1px 1px black;
+    color:white;
+}
+section .box-office .mySwiper1 .swiper-slide .photo .des {
+    display:none;
+    position:absolute;
+    top:0; left:0;
+    background-color:rgba(0,0,0, 0.8);
+    color:white;
+    padding:50px 26px;
+    font-size:14px;
+    line-height:24px;
+    height:100%;
+}
+section .box-office .mySwiper1 .swiper-slide .photo .des p {
+    height:150px;
+    margin:0;
+    margin-bottom:100px;
+    overflow:hidden;
+}
+section .box-office .mySwiper1 .swiper-slide .photo .des .reviewBtn {
+    margin: 0 auto;
+    display: block;
+    padding: 5px 15px;
+    background: none;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius:6px;
+}
+section .box-office .mySwiper1 .swiper-slide .photo .des p.score {
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+section .box-office .mySwiper1 .swiper-slide .photo .des p.score span {
+    font-size:30px;
+    color:#03AED2;
+    margin-left:5px;
+}
+section .box-office .mySwiper1 .swiper-slide .photo:hover .des {
+    display:block;
+}
+section .box-office .mySwiper1 .swiper-slide .btns button {
+    border:1px solid #03AED2;
+    padding:5px;
+    border-radius:6px;
+    text-align:center;
+    height:36px;
+    width:160px;
+    color:white;
+    font-size:14px;
+    margin:10px 0 0 0;
+    background-color:#03AED2;
+}
+section .box-office .mySwiper1 .swiper-slide .btns button.line {
+    background-color:transparent;
+    width:100px;
+    margin:10px 3px 0 0;
+    border:1px solid white;
+}
+section .box-office .mySwiper1 .swiper-slide .btns button span {
+    display:inline-block;
+    width:15px;
+    height:13px;
+    background-image:url(../img/ico-heart-toggle-main.png);
+    background-position:top left;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+section .box-office .mySwiper1 .swiper-slide .btns button.active span {
+    background-position:top right;
+}
+
+section.s3 {
+    background-color:#03AED2;
+}
+section .benefit {
+    margin-top:50px;
+}
+section .benefit ul {
+    display:flex;
+    justify-content:space-between;
+}
+section .benefit ul li {
+    text-align:center;
+    width:20%;
+}
+section .benefit ul li img {
+    width:auto;
+    height:50px;
+    object-fit:scale-down;
+    margin-bottom:15px;
+}
+section.s4 {
+    background-color:#eee;
+}
+section.s4 h2 {
+    color:#111;
+}
+section .guide {
+    margin-top:50px;
+    position:relative;
+}
+section .guide .swiper {
+    width:1100px;
+    height:170px;
+    margin:0 auto;
+}
+section .guide .swiper .swiper-slide {
+    height:170px;
+    border-radius:10px;
+    cursor:pointer;
+    background-position:left top;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+section .guide .swiper .swiper-slide:hover {
+    background-position:left bottom;
+}
+section .guide .swiper .slide1 {
+    background-image:url(../img/bg-main-megainfo-atmos2.png);
+}
+section .guide .swiper .slide2 {
+    background-image:url(../img/bg-main-megainfo-mx4d2.png);
+}
+section .guide .swiper .slide3 {
+    background-image:url(../img/bg-main-megainfo-private.png);
+}
+section .guide .swiper .slide4 {
+    background-image:url(../img/bg-main-megainfo-boutique3.png);
+}
+section .guide .swiper .slide5 {
+    background-image:url(../img/bg-main-megainfo-atmos2.png);
+}
+section .guide .swiper .slide6 {
+    background-image:url(../img/bg-main-megainfo-comfort.png);
+}
+section .guide .swiper .slide7 {
+    background-image:url(../img/bg-main-megainfo-kids.png);
+}
+section .guide .swiper-button-prev:after {
+    color:#ccc;
+    font-size:30px;
+}
+section .guide .swiper-button-next:after {
+    color:#ccc;
+    font-size:30px;
+}
+section table tr td:last-child {
+    width:40%;
+}
+section .btn-info { color:white; }
+section .input-group-text { color:white; }
+
+
+
+/* 상세 보기 페이지 */
+section .detail-movie-info {
+    display:flex;
+    justify-content:space-between;
+}
+section .detail-movie-info img {
+    width:initial;
+}
+section .detail-movie-info .detail-movie-txt {
+    width:70%;
+}
+section .detail-movie-info .detail-movie-txt h2 {
+    font-size:30px;
+    color:#03AED2;
+    text-align:left;
+}
+section .detail-movie-info .detail-movie-txt .movie-btns button {
+    padding: 7px 20px;
+    margin-top: 20px;
+    background-color: #03aed2;
+    color: white;
+    border-radius: 6px;
+    border: none;
+}
+/* 예매 페이지 */
+section .reservation .wrap { display:flex; justify-content:space-between; }
+section .reservation .movie-info-text h3 {
+    font-size:20px;
+}
+section .reservation .reserve-info {
+    width:65%;
+    display:flex;
+    justify-content:space-between;
+}
+section .reservation .resDay-header {
+    display:flex;
+}
+section .reservation .resDay-title {
+    width:200px;
+    height:95px;
+    font-size:20px;
+    margin-bottom:20px;
+}
+section .reservation .resDay-calendar {
+    width:100%;
+    height:300px;
+    background-color:rgba(255,255,255,0.1);
+}
+section .reservation .theater {
+    width:450px;
+    height:500px;
+    background-color:rgba(255,255,255,0.1);
+}
+section .reservation .theater .theater-title {
+    padding:10px;
+}
+section .reservation .theater .theater-select {
+    width:100%;
+    border-radius:6px;
+}
+section .reservation .theater .theater-select .showcase {
+    display:flex;
+    justify-content:space-between;
+}
+section .reservation .theater .theater-select .showcase li {
+    display:flex;
+    align-items:center;
+}
+section .reservation .theater .theater-select .seat-container .screen {
+    width:80%;
+    height:40px;
+    margin:0 auto;
+    background-color:#666;
+    margin-bottom:40px;
+    text-align:center;
+    line-height:40px;
+}
+section .reservation .theater .theater-select .seat-container .row {
+    width:80%;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+section .reservation .theater .theater-select .seat-container .row span {
+    display:block;
+    width:26px;
+    height:26px;
+    border-radius:10px 10px 0 0;
+    background-color:#444;
+    padding:0;
+    text-align:center;
+}
+section .reservation .theater .theater-select .seat-container .row:nth-child(2) span,
+section .reservation .theater .theater-select .seat-container .row span:first-child,
+section .reservation .theater .theater-select .seat-container .row .blank {
+    background-color:transparent;
+}
+section .reservation .theater .theater-select .seat-container .seat-error-blank {
+    text-align:center;
+    margin-top:20px;
+    color:hotpink;
+}
+.blank  {
+    width:15px;
+    height:12px;
+}
+section .reservation .theater .theater-select .seat-container .row span.occupiedSeat {
+    background-color:#ff4f4f;
+    pointer-events:none;
+}
+section .reservation .theater .theater-select .seat-container .row span.selectedSeat {
+    background-color:hotpink;
+}
+.seat:hover {
+    cursor:pointer;
+    scale:1.2;
+}
+.selectedSeat:hover {
+    cursor:pointer;
+    scale:1.2;
+}
+.seatError-blank {
+    font-size:16px;
+    font-weight:bold;
+    color:#333;
+    text-align:center;
+    margin-top:20px;
+}
+.seatError {
+    font-size:16px;
+    font-weight:bold;
+    text-align:center;
+    margin-top:20px;
+    color:hotpink;
+}
+.dateError-blank {
+    font-size:16px;
+    font-weight:bold;
+    color:#333;
+    text-align:center;
+    margin-top:10px;
+}
+.dateError {
+    font-size:16px;
+    font-weight:bold;
+    text-align:center;
+    margin-top:20px;
+    color:hotpink;
+}
+.movieError-blank {
+    font-size:16px;
+    font-weight:bold;
+    color:#333;
+    text-align:center;
+    margin-top:10px;
+}
+.movieError {
+    font-size:16px;
+    font-weight:bold;
+    text-align:center;
+    margin-top:20px;
+    color:hotpink;
+}
+.availableSeatIcon{
+    background-color: #444;
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    border-radius:8px 8px 0 0 ;
+}
+.selectedSeatIcon{
+    background-color: hotpink;
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    border-radius:8px 8px 0 0 ;
+}
+.occupiedSeatIcon {
+    background-color: #4D869C;
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    border-radius:8px 8px 0 0 ;
+}
+/* 나의 예매 내역(myReserve) */
+section .reserve-container {
+    margin-top:50px;
+    display:flex;
+    flex-flow:row wrap;
+    gap:24px;
+}
+section .reserve-container > div {
+    width:32%;
+    padding:30px;
+    background-color:rgba(255,255,255, 0.1);
+    border-radius:10px;
+    box-shadow:2px 2px 4px #444;
+}
+section .reserve-container div .movie-img {
+    width:50%;
+    border-radius:8px;
+    overflow:hidden;
+    margin:0 auto 30px;
+}
+section .reserve-container div .movie-img img {
+    width:100%; height:100%;
+    object-fit:cover;
+}
+section .reserve-container div .movie-info {
+    text-align:center;
+    line-height:10px;
+    font-size:14px;
+}
+section .reserve-container div .movie-btn {
+    text-align:center;
+    font-size:20px;
+    color:hotpink;
+    padding-top:20px;
+}
+section .reserve-container div .movie-btn button {
+    background-color:#03AED2;
+    font-size:14px;
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    color:white;
+    margin-top:20px;
+}
+/* 빠른 예매 페이지의 선택 버튼(quick)*/
+section .choiceBtn.active {
+    background-color:hotpink;
+}
+
+
+
+
+
+
+/*footer*/
+footer {
+    background-color:#000;
+    border-top:1px solid rgba(255,255,255, 0.2);
+    padding:40px 0;
+}
+footer a { color:#ddd; font-size:13px; }
+footer .center-box > div {
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+}
+footer ul { display:flex; }
+footer .center-box > div { display:flex; justify-content:space-between; }
+footer .center-box div ul li { margin:10px; }
+footer .center-box .strong { font-weight:bold; }
+footer .center-box .footer-search a {
+    border-radius:30px; width:130px; height:34px;
+    border:1px solid #fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+footer .center-box .footer-search p {
+    margin-left:5px;
+    margin-bottom:0;
+}
+footer .center-box .footer-search img {
+    width:15px;
+}
+footer .center-box .down-area { margin-top:30px; }
+footer .center-box .down-area .left-info {
+    display:flex;
+}
+footer .center-box .down-area .left-info .footer-logo {
+    width:150px; margin-left:5px;
+}
+footer .center-box .down-area .left-info address {
+    color:#fff;
+    line-height:22px;
+    font-style:normal;
+    margin-left:20px;
+}
+footer .center-box .down-area .sns ul li {
+    margin-left:10px;
+    margin-right:0;
+}

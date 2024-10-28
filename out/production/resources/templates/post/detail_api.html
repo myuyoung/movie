@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<th:block layout:fragment="content">
+    <section class="s1">
+        <div class="center-box">
+            <h2>영화 상세 정보</h2>
+            <div class="content detail-movie-info">
+                <img th:src="${movieData.image}" class="poster" width="300" height="450">
+                <div class="detail-movie-txt">
+                    <p class="releaseDate">개봉일 : [[${movieData.releaseDate}]]</p>
+                    <h2 class="movie-name" th:text="${movieData.movieNm}"></h2>
+                    <p class="desc">시놉시스 : [[${movieData.overview}]]</p>
+                    <p class="time">상영시간 : [[${movieData.runtime}]]분</p>
+                    <div class="movie-btns">
+                        <button id="reservationBtn" class="reservationBtn" th:id="'reservation-'+${movieData.id}" th:data-movie-id="${movieData.id}" th:data-movie-rank="${movieData.rank}" th:data-movie-nm="${movieData.movieNm}" th:data-movie-image="${movieData.image}" th:data-movie-overview="${movieData.overview}" th:data-movie-runtime="${movieData.runtime}" th:data-release-date="${movieData.releaseDate}" th:onclick="'reservation(' + ${movieData.id} + ')'">예매하기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function reservation(id){
+            //로그인 체크
+            if(checkLogin()){
+                const movieElement = document.querySelector(`[data-movie-id="${id}"]`);
+                const rank = movieElement.getAttribute("data-movie-rank");
+                const movieNm = movieElement.getAttribute("data-movie-nm");
+                const image = movieElement.getAttribute("data-movie-image");
+                const overview = movieElement.getAttribute("data-movie-overview");
+                const runtime = movieElement.getAttribute("data-movie-runtime");
+                const releaseDate = movieElement.getAttribute("data-release-date");
+
+                //폼 요소를 동적으로 생성
+                const form = document.createElement("form");
+                form.setAttribute("method","POST");
+                form.setAttribute("action","/reserve/start");
+
+                //폼에 히든 필드 추가
+                addHiddenField(form, "id", id);
+                addHiddenField(form, "rank", rank);
+                addHiddenField(form, "movieNm", movieNm);
+                addHiddenField(form, "image", image);
+                addHiddenField(form, "overview", overview);
+                addHiddenField(form, "runtime", runtime);
+                addHiddenField(form, "releaseDate", releaseDate);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+        function checkLogin(){
+            const isLogin = [[${#authentication.principal != 'anonymousUser'}]];
+            if(isLogin){
+                return true;
+            }else{
+                alert("로그인 후에 이용해 주세요!");
+                window.location.href = "/user/login";
+            }
+        }
+        function addHiddenField(form, name, value){
+            const input = document.createElement("input");
+            input.setAttribute("type", "hidden");
+            input.setAttribute("name", name);
+            input.setAttribute("value", value);
+            form.appendChild(input);
+        }
+    </script>
+</th:block>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<th:block layout:fragment="content">
+    <section class="s1">
+        <div class="center-box">
+            <form th:action="@{/reserve/done}" method="post">
+                <input type="hidden" name="rank" th:value="${rank}">
+                <input type="hidden" name="image" th:value="${image}">
+                <input type="hidden" name="movieNm" th:value="${movieNm}">
+                <input type="hidden" name="username" th:value="${#authentication.principal.username}">
+                <input type="hidden" name="reservation_day" th:value="${reservation_day}">
+                <input type="hidden" name="reservation_num" th:value="${reservation_num}">
+                <div class="content check">
+                    <table class="wrapper" role="presentation">
+                        <tr>
+                            <td>
+                                <img th:src="${image}" alt="movie image">
+                            </td>
+                            <td class="reservation-box">
+                                <table role="presentation">
+                                    <tr>
+                                        <td>
+                                            <h1>예매 확인</h1>
+                                            <p>예매 내역을 확인해 주세요.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table role="presentation">
+                                    <tr>
+                                        <td>영화 제목 : </td>
+                                        <td>
+                                            <p th:text="${movieNm}"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>상영 일시 : </td>
+                                        <td>
+                                            <p th:text="${reservation_day}"></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>좌석 번호 : </td>
+                                        <td>
+                                            <p th:text="${reservation_num}"></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table role="presentation">
+                                    <tr>
+                                        <td>
+                                            ★ 영화 상영시작시간 15분 전까지 취소가 가능하며<br> 캡쳐화면은 입장이 제한될 수 있습니다.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            ★ 입장 지연에 따른 관람 불편을 최소화하기 위해<br> 본 영화는 10분 후 상영이 시작됩니다.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <button type="button" class="undoBtn" onclick="history.back();">돌아가기</button>
+                                            <button type="submit" class="doneBtn">예매완료</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </section>
+    <script th:inline="javascript">
+        function getSelectedSeatsFrom(){
+            //JSON.parse(localStorage.getItem()) : 로컬 스토리지(사용자의 로컬에 존재하는 저장소)에서 아이템(JSON 형식)을 가져와서 String으로 변환함
+            const selectedSeats = JSON.parse(
+                localStorage.getItem("selectedSeats")) || [];
+            return selectedSeats;
+        }
+        function updateSeatsOnSubmit(){
+            //getSelectedSeatsFrom함수를 호출한 다음 getSelectedSeatsFrom함수에서 return한 값(selectedSeats클래스가 적용된 요소)을 selectedSeats변수에 저장
+            const selectedSeats = getSelectedSeatsFrom();
+            //한 개 이상 선택된 selectedSeats요소(선택된 좌석)의 개수만큼 반복
+            selectedSeats.forEach(seatId => {
+                //선택된 좌석의 data-seat속성을 가져와서 seatElement변수에 저장
+                const seatElement = document.querySelector(`.seat[data-seat="${seatId}"]`);
+                //seatElement변수에 값이 있으면 selectedSeat클래스를 제거하고 occupiedSeat클래스 추가(예매된 좌석이므로 더이상 선택 불가)
+                if(seatElement){
+                    seatElement.classList.remove("selectedSeat");
+                    seatElement.classList.add("occupiedSeat");
+                }
+            });
+        }
+        //아이디가 doneBtn인 요소에 클릭이벤트 설정
+        $("doneBtn").click(function(){
+            updateSeatsOnSubmit();
+            //내부저장소의 selectedSeats제거
+            localStorage.removeItem("selectedSeats");
+        });
+    </script>
+</th:block>

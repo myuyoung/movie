@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+<th:block layout:fragment="content">
+    <section class="s1">
+        <div class="center-box">
+            <h2>영화 상세 정보</h2>
+            <div class="mb-3 bg-dark bg-gradient">
+                영화명 : <p th:text="${movie.name}"></p>
+            </div>
+            <div class="mb-3 bg-dark bg-gradient">
+                영화감독 : <p th:text="${movie.director}"></p>
+            </div>
+            <div class="mb-3 bg-dark bg-gradient">
+                영화배급사 : <p th:text="${movie.distributer}"></p>
+            </div>
+            <div class="mb-3 bg-dark bg-gradient">
+                주연배우 : <p th:text="${movie.actor}"></p>
+            </div>
+            <div class="mb-3 bg-dark bg-gradient">
+                별점 : <p th:text="${movie.rating}"></p>
+            </div>
+            <div class="mb-3 bg-dark bg-gradient">
+                관람료 : <p th:text="${movie.price}"></p>
+            </div>
+            <div class="mb-3 bg-dark bg-gradient">
+                시놉시스 : <p th:text="${movie.plot}"></p>
+            </div>
+            <a th:href="@{/movies/reserve}" class="btn btn-info my-2">예매하기</a>
+            <a th:href="@{/movies/list}" class="btn btn-light my-2">영화목록</a>
+        </div>
+    </section>
+</th:block>
+</html>

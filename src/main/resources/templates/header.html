@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<th:block th:fragment="headerFrag">
+    <head>
+        <meta charset="UTF-8">
+        <title>SPRING BOOT 3 - 영화 예매 프로젝트</title>
+        <link th:href="@{/css/bootstrap.css}" type="text/css" rel="stylesheet">
+        <link th:href="@{/css/swiper-bundle.min.css}" type="text/css" rel="stylesheet">
+        <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+
+        <script th:src="@{/js/jquery-3.7.1.js}"></script>
+        <script th:src="@{/js/bootstrap.bundle.js}"></script>
+        <script th:src="@{/js/swiper-bundle.min.js}"></script>
+        <script th:src="@{/js/script.js}"></script>
+    </head>
+    <body>
+        <header>
+            <div class="center-box">
+                <div class="top-menu">
+                    <div class="left_area">
+                        <ul>
+                            <li><a href="#">VIP LOUNGE</a></li>
+                            <li><a href="#">멤버십</a></li>
+                            <li><a href="#">고객센터</a></li>
+                        </ul>
+                    </div>
+                    <div class="right_area">
+                        <ul>
+                            <li>
+                                <a th:href="@{/user/login}" sec:authorize="isAnonymous()">로그인</a>
+                                <a th:href="@{/user/logout}" sec:authorize="isAuthenticated()">로그아웃</a>
+                            </li>
+                            <li><a th:href="@{/user/join}">회원가입</a></li>
+                            <li><a th:href="@{/reserve/quick}">빠른예매</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navi">
+                    <div class="left_icon">
+                        <ul>
+                            <li><a href="#"><img th:src="@{/img/menu_icon.png}" alt="메뉴 아이콘"></a></li>
+                            <li><a href="#"><img th:src="@{/img/ico-search-white.png}" alt="검색 아이콘"></a></li>
+                        </ul>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a th:href="@{/movies/list}" class="menu">영화</a>
+                                <ul class="sub">
+                                    <li><a th:href="@{/movies/list}">전체영화</a></li>
+                                    <li><a href="#">큐레이션</a></li>
+                                    <li><a href="#">무비포스트</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a th:href="@{/movies/reserve}" class="menu">예매</a>
+                                <ul class="sub">
+                                    <li><a th:href="@{/reserve/quick}">빠른예매</a></li>
+                                    <li><a href="#">상영시간표</a></li>
+                                    <li><a th:href="@{/my/myReserve}">예매 내역</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="menu">극장</a>
+                                <ul class="sub">
+                                    <li><a href="#">전체극장</a></li>
+                                    <li><a href="#">특별관</a></li>
+                                </ul>
+                            </li>
+                            <li class="event">
+                                <a href="#" class="menu">이벤트</a>
+                                <ul class="sub">
+                                    <li><a href="#">진행중 이벤트</a></li>
+                                    <li><a href="#">지난 이벤트</a></li>
+                                    <li><a href="#">당첨자 발표</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">스토어</a></li>
+                            <li>
+                                <a href="#" class="menu">혜택</a>
+                                <ul class="sub">
+                                    <li><a href="#">K-CINEMA 멤버십</a></li>
+                                    <li><a href="#">제휴/할인</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="right_icon">
+                        <ul>
+                            <li><a href="#"><img th:src="@{/img/ico-schedule-white.png}" alt="달력 아이콘"></a></li>
+                            <li><a th:href="@{/my/myPage}"><img th:src="@{/img/ico-mymega-white.png}" alt="마이 아이콘"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="logo">
+                    <a th:href="@{/}">
+                        <img th:src="@{/img/logo.png}" alt="로고">
+                    </a>
+                </div>
+            </div>
+            <!--서브메뉴 배경-->
+            <div class="sub-bg"></div>
+        </header>
+    </body>
+</th:block>
+</html>

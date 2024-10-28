@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<th:block layout:fragment="content">
+    <section class="s1">
+        <div class="center-box">
+            <h2>나의 예매내역 확인</h2>
+            <div class="reserve-container">
+                <!-- 예매 내역이 1개 이상이므로 예매 내역 개수만큼 반복 -->
+                <div th:each="reservation : ${reservations}">
+                    <div class="movie">
+                        <!-- 영화 포스터 이미지 -->
+                        <div class="movie-img">
+                            <img th:src="${reservation.image}">
+                        </div>
+                        <!-- 영화 정보 -->
+                        <div class="movie-info">
+                            <p>예매 번호 : <span th:text="${reservation.reservation_id}"></span></p>
+                            <p>영화 제목 : <span th:text="${reservation.movieNm}"></span></p>
+                            <p>좌석 번호 : <span th:text="${reservation.reservation_num}"></span></p>
+                            <p>예매 일자 : <span th:text="${reservation.reservation_day}"></span></p>
+                        </div>
+                        <div class="movie-btn">
+                            <p>영화 그 이상의 감동, K-CINEMA</p>
+                            <button class="cancelBtn" th:data-reserve-id="${reservation.reservation_id}" onclick="cancelfn(this.dataset.reserveId);">예매 취소</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script th:inline="javascript">
+        function cancelfn(reservation_id){
+            if (confirm("정말로 예매를 취소하시겠습니까?")){
+                //<확인>버튼 클릭했을 때 실행
+                fetch("/my/myReserve/" + reservation_id, {
+                    method:"DELETE",
+                    headers: {
+                        "Content-Type" : "application/json"
+                    }
+                }).then(response => {
+                    if(response.ok){
+                        alert("예매 취소가 완료되었습니다!");
+                        //페이지 새로고침
+                        window.location.reload();
+                    }else{
+                        alert("예매 취소에 실패했습니다!");
+                    }
+                }).catch(error => {
+                    alert("예매 취소에 실패했습니다!");
+                });
+            }else{
+                //아니오 클릭했을 때에는 페이지 새로고침
+                window.location.reload();
+            }
+        }
+    </script>
+</th:block>
