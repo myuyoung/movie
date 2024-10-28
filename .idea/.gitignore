@@ -6,3 +6,7 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Gradle 및 시스템 임시 파일 무시 설정
+.gradle/
+__MACOSX/
+*.lock
